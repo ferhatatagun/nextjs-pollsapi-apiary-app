@@ -8,7 +8,7 @@ const Header = ({ title, subtitle }) => {
       <Col span={12}>
         <PageHeader
           className="site-page-header"
-          onBack={() => null}
+          onBack={() => window.history.back()}
           title={title}
           subTitle={subtitle ? subtitle : null}
         />

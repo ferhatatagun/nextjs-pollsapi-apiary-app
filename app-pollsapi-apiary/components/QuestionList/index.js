@@ -38,14 +38,15 @@ const QuestionList = ({ questions }) => {
               href={{
                 pathname: '/question',
                 query: {
-                  queryId: url.split('/')[2],
-                  id: url.split('/')[2]
+                  queryId: url.split('/')[2]
                 }
               }}
               as={`/questions/${url.split('/')[2]}`}
               key={url.split('/')[2]}
             >
               <Card
+                extra={<a>Detail</a>}
+                title={question}
                 key={url}
                 style={{ width: '100%', marginTop: 16, cursor: 'pointer' }}
                 loading={loading}
