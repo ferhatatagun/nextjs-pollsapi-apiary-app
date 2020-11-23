@@ -1,4 +1,3 @@
-import NavBar from '../Nav'
 import { Row, Col, Divider } from 'antd'
 import { PageHeader } from 'antd'
 

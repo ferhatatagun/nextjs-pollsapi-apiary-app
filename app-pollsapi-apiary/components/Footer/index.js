@@ -5,19 +5,18 @@ const Footer = () => {
   const [size, setSize] = useState('small')
   const menu = () => (
     <Menu>
-      <Menu.Item key="1">Github</Menu.Item>
+      <Menu.Item key="1">Gitlab</Menu.Item>
       <Menu.Item key="2">Documentation</Menu.Item>
     </Menu>
   )
 
   return (
     <>
-      <br />
-      <Divider orientation="left" plain>
+      {/* <Divider orientation="left" plain>
         # pollsapi-apiary
-      </Divider>
+      </Divider> */}
       <Row
-        justify="end"
+        justify="center"
         align="middle"
         style={{
           padding: 24
@@ -28,7 +27,13 @@ const Footer = () => {
             <Col justify="center" align="center" justify="center">
               <p>Next js application made with pollsapi of apiary</p>
               <Space>
-                <Button type="primary">Gitlab</Button>
+                <Button
+                  target="_blank"
+                  href="https://gitlab.com/ferhatatagun/pollsapi-apiary"
+                  type="primary"
+                >
+                  Gitlab
+                </Button>
                 <Dropdown.Button overlay={menu}>Nextjs</Dropdown.Button>
               </Space>
             </Col>

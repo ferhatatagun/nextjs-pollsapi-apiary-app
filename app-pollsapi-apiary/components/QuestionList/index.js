@@ -1,8 +1,8 @@
-// import Link from 'next/link'
-// import BubblyButton from '../BubblyButton'
-import { Row, Col, Card, Empty, Spin, Button, Skeleton } from 'antd'
 import { useEffect, useState } from 'react'
+import { Row, Col, Card, Empty, Spin, Space } from 'antd'
+import { ArrowRightOutlined } from '@ant-design/icons'
 import InternalLink from '../../components/InternalLink'
+import moment from 'moment'
 
 const options = {
   weekday: 'short',
@@ -13,7 +13,7 @@ const options = {
   minute: '2-digit'
 }
 
-const QuestionList = ({ questions }) => {
+const QuestionList = ({ questions, error }) => {
   const [initLoading, setInitLoading] = useState(true)
   const [loading, setLoading] = useState(true)
 
@@ -29,9 +29,7 @@ const QuestionList = ({ questions }) => {
       {/* <BubblyButton /> */}
       <Col xs={{ span: 20, offset: 1 }} lg={{ span: 20, offset: 2 }}>
         {initLoading ? (
-          <div className="example">
-            <Spin />
-          </div>
+          <Spin style={{ width: '100%' }} />
         ) : questions.length > 0 ? (
           questions.map(({ url, question, published_at, choices }) => (
             <InternalLink
@@ -45,15 +43,22 @@ const QuestionList = ({ questions }) => {
               key={url.split('/')[2]}
             >
               <Card
-                extra={<a>Detail</a>}
+                extra={
+                  <div type="link" href="#">
+                    <Space>
+                      <ArrowRightOutlined />
+                      Go Vote
+                    </Space>
+                  </div>
+                }
                 title={question}
                 key={url}
                 style={{ width: '100%', marginTop: 16, cursor: 'pointer' }}
                 loading={loading}
               >
                 <div className="text--sm color--sec created-at--padding">
-                  Created at:{' '}
-                  {new Date(published_at).toLocaleDateString('en', options)}
+                  Creation Date:{' '}
+                  {moment(published_at).startOf('hour').fromNow()}
                 </div>
                 <div className="text--sm color--sec">
                   Choices: {choices.length}
@@ -64,6 +69,7 @@ const QuestionList = ({ questions }) => {
         ) : (
           <Empty />
         )}
+        {error ? <Spin /> : null}
       </Col>
     </Row>
   )
