@@ -4,15 +4,6 @@ import { ArrowRightOutlined } from '@ant-design/icons'
 import InternalLink from '../../components/InternalLink'
 import moment from 'moment'
 
-const options = {
-  weekday: 'short',
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
-}
-
 const QuestionList = ({ questions, error }) => {
   const [initLoading, setInitLoading] = useState(true)
   const [loading, setLoading] = useState(true)
@@ -26,10 +17,9 @@ const QuestionList = ({ questions, error }) => {
 
   return (
     <Row>
-      {/* <BubblyButton /> */}
       <Col xs={{ span: 20, offset: 1 }} lg={{ span: 20, offset: 2 }}>
         {initLoading ? (
-          <Spin style={{ width: '100%' }} />
+          <Spin className="col-s-12" />
         ) : questions.length > 0 ? (
           questions.map(({ url, question, published_at, choices }) => (
             <InternalLink
