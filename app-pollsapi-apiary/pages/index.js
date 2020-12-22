@@ -7,7 +7,7 @@ import { getEveryQuestion } from '../utils/api'
 
 const Index = () => {
   const [data, setData] = useState([])
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("")
 
   useEffect(() => {
     async function getInitialProps() {

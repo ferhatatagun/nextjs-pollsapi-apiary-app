@@ -19,14 +19,12 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Form, { useForm } from 'antd/lib/form/Form'
-import { vote } from '../utils/api'
 
 const Question = () => {
   const router = useRouter()
-  const queryString = require('query-string')
   const queryId = router.asPath.split('=')[1]
   const [data, setData] = useState(null)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("false")
   const [sendVote, setSendVote] = useState(false)
   const [isSendVoteStatus, setIsSendVoteStatus] = useState(false)
   const [isSendVoteItem, setIsSendVoteItem] = useState('')
@@ -44,8 +42,8 @@ const Question = () => {
         setData(res.data)
         setChoises(res.data.choices)
       })
-      .catch(() => {
-        setError(true)
+      .catch((err) => {
+        setError(err)
       })
   }
 
@@ -89,6 +87,7 @@ const Question = () => {
 
   return (
     <Layout title={'Question'} subtitle={data !== null ? data.question : false}>
+      {error && <div className="error"> {error} </div>}
       <Card
         style={{ marginTop: 16 }}
         type="inner"
