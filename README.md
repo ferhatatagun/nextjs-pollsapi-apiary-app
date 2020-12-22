@@ -7,8 +7,6 @@ Next js application made with pollsapi of apiary
 
 First, run the development server:
 
-cd app-pollsapi-apiary
-
 ```bash
 cd app-polls-api-apiary
 yarn 
