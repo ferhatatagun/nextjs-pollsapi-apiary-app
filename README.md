@@ -5,6 +5,11 @@ Next js application made with pollsapi of apiary
 
 ## Getting Started
 
+Backend API is provided by Polls API : https://pollsapi.docs.apiary.io/
+
+Boilerplate based on React Next Boilerplate : https://github.com/react-next-boilerplate/react-next-boilerplate
+
+
 First, run the development server:
 
 ```bash
